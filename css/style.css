@@ -134,17 +134,19 @@ body {
 /*buttons*/
 .main-button {
   padding: 16px 32px;
-  background: var(--primary-brand);
+  background-color: var(--primary-brand);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border: 0;
   color: var(--extra-light);
   cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
-.main-button:focus,
-.main-button:hover,
-.main-button:active {
-  background: var(--pressed-state);
+.main-button:is(:hover, :focus) {
+  background-color: var(--pressed-state);
 }
 .filter-button {
   padding: 16px 32px;
@@ -153,15 +155,16 @@ body {
   border: 1px solid var(--accent);
   color: var(--primary-brand);
   cursor: pointer;
+  transition-property: background-color, box-shadow, border-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
-.filter-butt:focus,
-.filter-button:hover,
-.filter-button:active {
-  background: Var(--pressed-state);
+.filter-button:is(:hover, :focus) {
+  background-color: Var(--pressed-state);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
-  border: 1px solid var(--pressed-state);
+  border-color: var(--pressed-state);
   color: var(--extra-light);
 }
 /*background colors*/
@@ -216,19 +219,37 @@ header {
 .my-link-list {
   display: flex;
 }
+.my-link-item {
+  position: relative;
+}
 .my-link-item:not(:last-child) {
   margin-right: 40px;
 }
 .my-link {
-  padding: 24px 0;
   color: var(--dark);
   text-decoration: none;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
-.my-link:focus,
-.my-link:hover,
-.my-link:active {
+.my-link:is(:hover, :focus) {
   color: var(--pressed-state);
-  border-bottom: 4px solid var(--pressed-state);
+}
+.current-page {
+  color: var(--pressed-state);
+}
+.current-page::after {
+  content: "";
+  background-color: var(--pressed-state);
+  border-radius: 2px;
+  height: 4px;
+  width: 100%;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  bottom: -25px;
 }
 .my-address-list {
   display: flex;
@@ -239,10 +260,12 @@ header {
 .my-address-link {
   text-decoration: none;
   font-style: normal;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
-.my-address-link:focus,
-.my-address-link:hover,
-.my-address-link:active {
+.my-address-link:is(:hover, :focus) {
   color: var(--pressed-state);
 }
 /*footer*/
@@ -270,22 +293,25 @@ header {
 .my-footer-social-list > li:not(:last-child) {
   margin-right: 16px;
 }
-
 .my-footer-social-link {
   display: block;
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+  color: var(--light);
   width: 40px;
   height: 40px;
   padding: 8px;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
-.my-footer-social-link:hover,
-.my-footer-social-link:focus {
-  background: var(--success);
+.my-footer-social-link:is(:hover, :focus) {
+  background-color: var(--success);
 }
 .icon-footer {
   display: block;
-  fill: var(--light);
+  fill: currentColor;
   width: 24px;
   height: 24px;
 }
@@ -382,19 +408,23 @@ header {
 }
 .my-team-social-link {
   display: block;
-  background: var(--primary-brand);
+  background-color: var(--primary-brand);
   border-radius: 50%;
+  color: var(--light);
   width: 40px;
   height: 40px;
   padding: 12px;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
-.my-team-social-link:hover,
-.my-team-social-link:focus {
-  background: var(--pressed-state);
+.my-team-social-link:is(:hover, :focus) {
+  background-color: var(--pressed-state);
 }
 .icon-team {
   display: block;
-  fill: var(--light);
+  fill: currentColor;
   width: 16px;
   height: 16px;
 }
@@ -409,26 +439,28 @@ header {
 }
 .customers-item {
   flex-basis: calc((100% - 120px) / 6);
-}
-.customers-link {
-  display: block;
   width: 168px;
   height: 88px;
 }
-.customers-link:hover {
-  border-color: var(--pressed-state);
-}
-.customers-icon {
+.customers-link {
+  display: block;
   width: 100%;
   height: 100%;
-  fill: var(--subtle-text);
   border: 1px solid var(--subtle-text);
   border-radius: 4px;
   padding: 16px 32px;
+  color: var(--subtle-text);
+  transition-property: border-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
-.customers-icon:hover {
-  border: 1px solid var(--pressed-state);
-  fill: var(--pressed-state);
+.customers-link:is(:hover, :focus) {
+  border-color: var(--pressed-state);
+  color: var(--pressed-state);
+}
+.customers-icon {
+  fill: currentColor;
 }
 /**Portfolio.html*/
 /*filtres*/
@@ -451,12 +483,35 @@ header {
   display: block;
   text-decoration: none;
   color: var(--text);
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0;
 }
 .my-portfolio-link:hover,
 .my-portfolio-link:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  cursor: pointer;
+}
+.my-portfolio-link:is(:hover, :focus) .my-portfolio-overlay {
+  transform: translateY(0%);
+}
+
+.my-portfolio-card {
+  position: relative;
+  overflow: hidden;
+}
+.my-portfolio-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--primary-brand);
+  transform: translateY(100%);
+  transition: transform 250ms ease;
+  padding: 40px 32px;
+  color: var(--light);
 }
 .my-portfolio-caption {
   padding: 32px 16px;
@@ -465,4 +520,61 @@ header {
 }
 .my-portfolio-caption h2 {
   margin-bottom: 8px;
+}
+/*modal*/
+.my-modal-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--modal-overlay);
+
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.my-modal-bg.is-hidden {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.my-modal-bg.is-hidden .my-modal-form {
+  transform: scale(0.9);
+}
+
+.my-modal-form {
+  background-color: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  width: 408px;
+  height: 576px;
+  padding: 24px;
+  transform: scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.my-modal-close {
+  width: 24px;
+  margin-left: auto;
+  cursor: pointer;
+}
+.my-modal-close-svg {
+  fill: #000;
+  padding: 7px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: var(--accent);
+}
+.my-modal-close-svg:is(:hover, :focus) {
+  fill: #fff;
+  background-color: var(--pressed-state);
 }

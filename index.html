@@ -25,7 +25,9 @@
           >
           <ul class="my-link-list">
             <li class="my-link-item">
-              <a href="./index.html" class="my-link body-medium-text dark"
+              <a
+                href="./index.html"
+                class="my-link body-medium-text dark current-page"
                 >Studio</a
               >
             </li>
@@ -64,7 +66,7 @@
           <h1 class="header-1 extra-light my-hero-text">
             Effective Solutions for Your Business
           </h1>
-          <button type="button" class="main-button button-text">
+          <button type="button" class="main-button button-text" data-modal-open>
             Order Service
           </button>
         </div>
@@ -329,42 +331,42 @@
           <ul class="customers-list">
             <li class="customers-item">
               <a href="#" class="customers-link">
-                <svg class="customers-icon">
+                <svg class="customers-icon" width="104" height="56">
                   <use href="./images/symbol-defs.svg#icon-client1"></use>
                 </svg>
               </a>
             </li>
             <li class="customers-item">
               <a href="#" class="customers-link">
-                <svg class="customers-icon">
+                <svg class="customers-icon" width="104" height="56">
                   <use href="./images/symbol-defs.svg#icon-client2"></use>
                 </svg>
               </a>
             </li>
             <li class="customers-item">
               <a href="#" class="customers-link">
-                <svg class="customers-icon">
+                <svg class="customers-icon" width="104" height="56">
                   <use href="./images/symbol-defs.svg#icon-client3"></use>
                 </svg>
               </a>
             </li>
             <li class="customers-item">
               <a href="#" class="customers-link">
-                <svg class="customers-icon">
+                <svg class="customers-icon" width="104" height="56">
                   <use href="./images/symbol-defs.svg#icon-client4"></use>
                 </svg>
               </a>
             </li>
             <li class="customers-item">
               <a href="#" class="customers-link">
-                <svg class="customers-icon">
+                <svg class="customers-icon" width="104" height="56">
                   <use href="./images/symbol-defs.svg#icon-client5"></use>
                 </svg>
               </a>
             </li>
             <li class="customers-item">
               <a href="#" class="customers-link">
-                <svg class="customers-icon">
+                <svg class="customers-icon" width="104" height="56">
                   <use href="./images/symbol-defs.svg#icon-client6"></use>
                 </svg>
               </a>
@@ -420,5 +422,17 @@
         </div>
       </div>
     </footer>
+
+    <!--Modal-->
+    <div class="is-hidden my-modal-bg" data-modal>
+      <div class="my-modal-form">
+        <div class="my-modal-close" data-modal-close>
+          <svg class="my-modal-close-svg" width="24" height="24">
+            <use href="./images/symbol-defs.svg#icon-close"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <script src="./java/modal.js"></script>
   </body>
 </html>
